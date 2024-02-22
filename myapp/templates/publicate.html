@@ -1,0 +1,49 @@
+{% extends "base.html"%}
+{% block title%} Publicate {%endblock%}
+{% block username %} 
+{% if authenticated %}
+  <span class="m-5 me-5 text-warning fw-bold fst-italic border border-warning rounded text-center align-middle p-1">
+    {{username}}   
+  </span>
+  <a class="btn btn-sm btn-light text-success" href='/logout'>Sair</a>
+{% else %}
+  <a class="btn btn-sm btn-light text-success" href='/logout'>Entrar</a>
+{% endif %}
+{% endblock username %}
+{% block conteudo%}
+{%  load static %}
+
+<br>
+
+<h1>CRIAR SUA LEMBRANÇA</h1>
+
+    
+      <form action="{% url 'publicate_page' %}"method = "POST" enctype="multipart/form-data"> {%csrf_token%}
+        <div class="mb-3 container bg-light form-control">
+            <div class="mb-3">
+                <label for="imagem" class="form-label">Inserir Imagem</label>
+                <input class="form-control form-control-sm" name="imagem" id="formFileSm" type="file">
+            </div>
+            <label for="tit" class="form-label">Titulo</label>
+            <input type="text" class="form-control" name="tit">
+      
+            <label for="author" class="form-label">Autor</label>
+            <input type="text" class="form-control" name="author">
+        
+            <label for="content" class="form-label">Descrição</label>
+            <textarea class="form-control" rows="10" name="content"></textarea>
+        </div>
+        <input class='btn btn-primary' type="submit" value='Publicar'>
+      </form>
+
+    
+  
+{% endblock conteudo%}
+
+
+
+
+
+
+
+

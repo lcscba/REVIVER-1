@@ -1,0 +1,57 @@
+{% extends "base.html"%}
+{% block title%} INICIO {%endblock%}
+{% block username %} 
+{% if authenticated %}
+  <span class="m-5 me-5 text-warning fw-bold fst-italic border border-warning rounded text-center align-middle p-1">
+    {{username}}   
+  </span>
+  <a class="btn btn-sm btn-light text-success" href='/logout'>Sair</a>
+{% else %}
+  <a class="btn btn-sm btn-light text-success" href='/logout'>Entrar</a>
+{% endif %}
+{% endblock username %}
+{% block conteudo%}
+{% load static %}
+
+<div id="carouselExampleIndicators" class="carousel slide container p-3" data-bs-ride="carousel">
+    <div class="carousel-indicators ">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner rounded-3 shadow">
+      <div class="carousel-item active">
+        <img src="{% static 'foto04.png' %}" class="d-block w-100 img-fluid" alt="..." style='width:500px; height: 500px;'>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'foto01.png' %}" class="d-block w-100 img-fluid" alt="..." style='width:500px; height: 500px;'>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'foto02.png' %}" class="d-block w-100 img-fluid" alt="..." style='width:500px; height: 500px;'>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'foto03.png' %}" class="d-block w-100 img-fluid" alt="..." style='width:500px; height: 500px;'>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Voltar</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Proximo</span>
+    </button>
+  </div>
+  <hr>
+  <div>
+    <h2 class='text-success bg-light text-center m-auto col-11'> CUIABÁ - CIDADE VERDE </h2>
+    <p style="font-family: 'arial'; text-align:justify;" class='text-justify p-3 m-auto col-11'>Cuiabá é um município brasileiro, capital do estado de Mato Grosso, Região Centro-Oeste do país. A cidade foi fundada em 1719 por Pascoal Moreira Cabral e descoberta por Miguel Sutil. Atualmente possui mais de 650 mil habitantes. Uma cidade conhecida nacionalmente pelo seu calor, rica em histórias que podem ser revividas aqui.<br>
+    </p>
+  </div>
+  <hr>
+<div class='container d-flex row justify-content-center'>
+<a style="font-family: 'Comic Sans MS', cursive;" class='m-1 col-5 btn btn-primary ' href='/feed'>VER LEMBRANÇAS</a>
+<a style="font-family: 'Comic Sans MS', cursive;" class=' m-1 col-5 btn btn-success' href="/publicate">CRIAR LEMBRANÇAS</a>
+</div>
+{% endblock%}

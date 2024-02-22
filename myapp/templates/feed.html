@@ -1,0 +1,45 @@
+{% extends "base.html"%}
+{%  load static %}
+{% block title%} Feed {%endblock%}
+{% block username %} 
+{% if authenticated %}
+  <span class="m-5 me-5 text-warning fw-bold fst-italic border border-warning rounded text-center align-middle p-1">
+    {{username}}   
+  </span>
+  <a class="btn btn-sm btn-light text-success" href='/logout'>Sair</a>
+{% else %}
+  <a class="btn btn-sm btn-light text-success" href='/logout'>Entrar</a>
+{% endif %}
+{% endblock username %}
+{% block conteudo%}
+
+<hr style="border-style: dashed; color: green; border-width: 2px;">
+
+<div>
+  <h2 class='text-success text-center m-auto col-11'> BOAS LEMBRANÇAS </h2>
+</div>
+<hr style="border-style: dashed; color: green; border-width: 2px;">
+
+<main class="p-3">
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-sm-4">
+            <div class="card mb-3 shadow">
+                <img src="{{ post.imagem.url }}" class="shadow card-img-top mx-auto d-block" alt="Imagem da Publicação" style="width: 402px; height: 260px;">
+
+                <div class="card-body">
+                    <h5 class="card-title text-uppercase">{{ post.tit }}</h5>
+                    <p class="card-text">{{ post.content|truncatechars:70}}</p>
+                    <p class="card-text text-uppercase"> {{ post.author }} {{ post.date }}</p>
+                    <a href="/post/{{ post.id }}" class="btn btn-success">Ver</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+
+</main>
+
+{% endblock %}
+
